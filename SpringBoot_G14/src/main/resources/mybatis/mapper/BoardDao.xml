@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.spg14.dao.IBoardDao">
+	<select id="getAllCount" resultType="_int">
+		select count(*) from board
+	</select>
+	
+	<select id="selectAll" resultType="com.ezen.spg14.dto.BoardVO"
+		parameterType="com.ezen.spg14.dto.Paging">
+		select * from(
+		select * from(
+			select rownum as rn, b.* from ( (select * from board order by num desc) b )
+		) where rn &gt;= #{startNum}
+		) where rn &lt;= #{endNum}
+	</select>
+	
+	<update id="increamentReadcount">
+		update board set readcount = readcount + 1 where num=#{param1}
+	</update>
+	
+	<select id="getBoard" resultType="com.ezen.spg14.dto.BoardVO">
+		select * from board where num=#{param1}
+	</select>
+	
+	<select id="selectReply" resultType="com.ezen.spg14.dto.ReplyVO">
+		select * from reply where boardnum=#{param1} order by num desc	 
+	</select>
+	
+	<select id="getCountReply" resultType="_int">
+		select count(*) from Reply where boardnum=#{param1}
+	</select>
+	
+	<insert id="insertReply" parameterType="com.ezen.spg14.dto.ReplyVO">
+		insert into reply(num, boardnum, userid, content)
+		values(reply_seq.nextVal, #{boardnum}, #{userid}, #{content} )
+	</insert>
+	
+	
+	<update id="updateBoard"  parameterType="com.ezen.spg14.dto.BoardVO">
+		update board set pass=#{pass}, email=#{email}, title=#{title}, 
+			content=#{content}, image=#{image} where num=#{num}
+	</update>
+	
+	
+	<delete id="deleteReplyAll">
+		delete from reply where boardnum=#{param1}
+	</delete>
+	
+	<delete id="deleteBoard">
+		delete from board where num=#{param1}
+	</delete>
+	
+	
+	<insert id="insertBoard" parameterType="com.ezen.spg14.dto.BoardVO">
+		insert into board (num, userid, pass, email, title, content, image)
+		values(board_seq.nextVal, #{userid},#{pass},#{email},#{title},#{content},#{image} )
+	</insert>
+	
+	
+	<delete id="deleteReply">
+		delete from reply where num=#{param1}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+

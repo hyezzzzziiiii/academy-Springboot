@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.spm01.dao.IOrderDao">
+	<insert id="insertOders">
+		insert into orders(oseq, id) values(orders_seq.nextVal, #{param1} )
+	</insert>
+	<select id="LookupMaxOseq" resultType="_int">
+		select max(oseq) from orders
+	</select>
+	<update id="updateCart">
+		update cart set result='2' where cseq=#{param1}
+	</update>
+	<insert id="insertOderDetail">
+		insert into order_detail(odseq, oseq, pseq, quantity) 
+		values(order_detail_seq.nextval, #{param2}, #{param1.pseq}, #{param1.quantity})
+	</insert>
+	<select id="listOrderById" resultType="com.ezen.spm01.dto.OrderVO">
+		select * from order_view 
+		where id=#{param1} and result like '%'||#{param2}||'%' and oseq=#{param3}
+	</select>
+	<select id="selectSeqOrderIng" resultType="int">
+		select distinct oseq from order_view 
+		where id=#{param1} and result='1' order by oseq desc
+	</select>
+	<select id="oseqListAll" resultType="int">
+		select distinct oseq from order_view where id=#{param1} order by oseq desc
+	</select>
+</mapper>
+
+
+

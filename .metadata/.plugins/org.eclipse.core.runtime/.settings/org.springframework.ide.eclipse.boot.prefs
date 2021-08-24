@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.jdbc=16
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.lombok=25
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mybatis=12
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.validation=17
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=33
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=SpringBoot_G15_Transaction01
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=2.4.2
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=com.ezen
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=1.8
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=SpringBoot_G15_Transaction01
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=com.ezen.spg15
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=GRADLE
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=0.0.1-SNAPSHOT
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n
